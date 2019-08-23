@@ -14,11 +14,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   List<String> litems = [
-    "https://i.pinimg.com/originals/e2/3a/7b/e23a7b277fc89805aec6c53bb8905867.jpg",
-    "https://i.pinimg.com/736x/56/b9/14/56b914a5e31494784e7d57aad6fd4199--australia-beach-queensland-australia.jpg",
-    "http://qwallps.com/wp-content/uploads/2018/10/Nature-Wallpaper-for-Mobile-Phone-with-Picture-of-Aurora-Borealis-1.jpg",
-    "https://www.larutadelsorigens.cat/wallpic/full/26-261022_phone-wallpapers-hd-nature-bing-wallpapers-for-mobile.jpg",
-    "https://wallpapercave.com/wp/wp2419351.jpg"
+    "lib/images/1.JPG",
+    "lib/images/2.JPG",
+    "lib/images/3.JPG",
+    "lib/images/4.JPG",
+    "lib/images/5.JPG"
   ];
   List<String> litems_text = [
     "Beach",
@@ -36,11 +36,15 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   List<String> litems_hotel_pic = [
-    "https://ambassadortravel.com.au/wp-content/uploads/2016/01/Dubai-Burj-Al-Arab-At-Night-Tour-450x338.jpeg",
-    "http://www.traveller.com.au/content/dam/images/g/i/7/0/9/1/image.gallery.articleLeadwide.620x349.gi6oko.png/1457053475012.jpg"
+    "lib/images/6.JPG",
+    "lib/images/7.JPG",
+    "lib/images/6.JPG",
+    "lib/images/7.JPG",
   ];
 
   List<String> litems_hotel_location = [
+    "Burj Al Arab, Dubai",
+    "New York City, USA",
     "Burj Al Arab, Dubai",
     "New York City, USA",
   ];
@@ -48,8 +52,12 @@ class _HomeScreenState extends State<HomeScreen> {
   List<String> litems_hotel_price = [
     "1100",
     "860",
+    "1100",
+    "860",
   ];
   List<String> litems_hotel_Name = [
+    "Burj Khalifa",
+    "Plaza Hotel",
     "Burj Khalifa",
     "Plaza Hotel",
   ];
@@ -58,18 +66,47 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text("Homepage"),
+        title: Text(
+          "",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-            child: Icon(Icons.notifications),
+            child: Stack(
+              children: <Widget>[
+                Icon(Icons.notifications),
+                new Positioned(
+                  right: 0,
+                  child: new Container(
+                    padding: EdgeInsets.all(1),
+                    decoration: new BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    constraints: BoxConstraints(
+                      minWidth: 12,
+                      minHeight: 12,
+                    ),
+                    child: new Text(
+                      "",
+                      style: new TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                )
+              ],
+            ),
           )
         ],
         elevation: 0.00,
       ),
       body: Container(
         color: Theme.of(context).primaryColor,
-        padding: const EdgeInsets.fromLTRB(20,20,20,0),
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
         child: ListView(
           children: <Widget>[
             Row(
@@ -142,12 +179,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                   width:
                                       MediaQuery.of(context).size.width * (0.3),
                                   child: Card(
-                                    color:Colors.transparent,
+                                    elevation: 0.00,
+                                    color: Colors.transparent,
                                     child: FittedBox(
                                       child: ClipRRect(
                                           borderRadius:
                                               new BorderRadius.circular(50.0),
-                                          child: Image.network(litems[index])),
+                                          child: Image.asset(litems[index])),
                                       fit: BoxFit.fill,
                                     ),
                                   ),
@@ -196,7 +234,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Row(
                                         children: <Widget>[
                                           Container(
-                                            color: Colors.transparent,
+                                            color:  Theme.of(context).primaryColor,
+                                            
                                             height: MediaQuery.of(context)
                                                     .size
                                                     .width *
@@ -206,13 +245,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     .width *
                                                 (0.3),
                                             child: Card(
-                                            color: Colors.transparent,
+                                              elevation: 0.00,
+                                              color: Theme.of(context).primaryColor,
                                               child: FittedBox(
                                                 child: ClipRRect(
                                                     borderRadius:
                                                         new BorderRadius
-                                                            .circular(50.0),
-                                                    child: Image.network(
+                                                            .circular(20.0),
+                                                    child: Image.asset(
                                                         litems_hotel_pic[
                                                             index])),
                                                 fit: BoxFit.fill,
@@ -239,7 +279,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 Icons.location_on,
                                                 color: Colors.grey,
                                                 size: 15,
-                                                
                                               ),
                                               Container(
                                                 child: Text(
@@ -281,11 +320,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       drawer: Drawer(
-      
         child: new ListView(
           children: <Widget>[
             new Container(
-              
               child: new DrawerHeader(
                   child: new CircleAvatar(
                 backgroundColor: Colors.red,
@@ -344,7 +381,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                     ],
                   ),
-                                    Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       new FlatButton(
@@ -360,7 +397,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                     ],
                   ),
-                                                   Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       new FlatButton(
@@ -376,7 +413,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                     ],
                   ),
-                  
                 ],
               ),
             )
@@ -399,7 +435,34 @@ class _HomeScreenState extends State<HomeScreen> {
             title: new Text('Favourite'),
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.message), title: Text('Messages')),
+              icon: Stack(
+                children: <Widget>[
+                  Icon(Icons.message),
+                  new Positioned(
+                    right: 0,
+                    child: new Container(
+                      padding: EdgeInsets.all(1),
+                      decoration: new BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      constraints: BoxConstraints(
+                        minWidth: 12,
+                        minHeight: 12,
+                      ),
+                      child: new Text(
+                        '2',
+                        style: new TextStyle(
+                          color: Colors.white,
+                          fontSize: 8,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              title: Text('Messages')),
           BottomNavigationBarItem(
               icon: Icon(Icons.person), title: Text('Profile'))
         ],
